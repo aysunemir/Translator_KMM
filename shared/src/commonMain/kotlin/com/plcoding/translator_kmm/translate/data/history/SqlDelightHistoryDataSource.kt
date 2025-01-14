@@ -2,8 +2,8 @@ package com.plcoding.translator_kmm.translate.data.history
 
 import app.cash.sqldelight.coroutines.asFlow
 import app.cash.sqldelight.coroutines.mapToList
-import com.plcoding.translator_kmm.core.domain.history.HistoryDataSource
-import com.plcoding.translator_kmm.core.domain.history.HistoryItem
+import com.plcoding.translator_kmm.translate.domain.history.HistoryDataSource
+import com.plcoding.translator_kmm.translate.domain.history.HistoryItem
 import com.plcoding.translator_kmm.core.domain.util.CommonFlow
 import com.plcoding.translator_kmm.core.domain.util.asCommonFlow
 import com.plcoding.translator_kmm.database.TranslateDatabase

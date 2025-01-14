@@ -1,6 +1,6 @@
 package com.plcoding.translator_kmm.translate.data.history
 
-import com.plcoding.translator_kmm.core.domain.history.HistoryItem
+import com.plcoding.translator_kmm.translate.domain.history.HistoryItem
 import database.HistoryEntity
 
 fun HistoryEntity.toHistoryItem() = HistoryItem(

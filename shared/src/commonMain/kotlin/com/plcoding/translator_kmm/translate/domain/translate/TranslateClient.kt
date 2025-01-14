@@ -10,6 +10,6 @@ interface TranslateClient {
     ): String
 }
 
-class TranslateException(error: TranslateError) : Exception(
+class TranslateException(val error: TranslateError) : Exception(
     "An error occurred when translating: $error"
 )

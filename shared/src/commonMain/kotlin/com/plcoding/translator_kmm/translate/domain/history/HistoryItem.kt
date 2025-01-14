@@ -1,4 +1,4 @@
-package com.plcoding.translator_kmm.core.domain.history
+package com.plcoding.translator_kmm.translate.domain.history
 
 data class HistoryItem(
     val id: Long?,

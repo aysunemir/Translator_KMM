@@ -1,4 +1,4 @@
-package com.plcoding.translator_kmm.core.domain.history
+package com.plcoding.translator_kmm.translate.domain.history
 
 import com.plcoding.translator_kmm.core.domain.util.CommonFlow
 
