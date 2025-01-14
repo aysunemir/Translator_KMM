@@ -1,0 +1,12 @@
+package com.plcoding.translator_kmm.translate.data.history
+
+import com.plcoding.translator_kmm.core.domain.history.HistoryItem
+import database.HistoryEntity
+
+fun HistoryEntity.toHistoryItem() = HistoryItem(
+    id = id,
+    fromLanguageCode = fromLanguageCode,
+    fromText = fromText,
+    toLanguageCode = toLanguageCode,
+    toText = toText
+)

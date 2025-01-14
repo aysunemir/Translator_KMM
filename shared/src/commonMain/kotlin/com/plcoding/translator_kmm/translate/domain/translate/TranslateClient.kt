@@ -11,5 +11,5 @@ interface TranslateClient {
 }
 
 class TranslateException(error: TranslateError) : Exception(
-    message = "An error occurred when translating: $error"
+    "An error occurred when translating: $error"
 )
