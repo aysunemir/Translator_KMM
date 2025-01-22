@@ -8,17 +8,25 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.plcoding.translator_kmm.Greeting
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.plcoding.translator_kmm.android.core.presentation.Routes
 import com.plcoding.translator_kmm.android.core.theme.darkColors
 import com.plcoding.translator_kmm.android.core.theme.lightColors
+import com.plcoding.translator_kmm.android.translate.presentation.AndroidTranslateViewModel
+import com.plcoding.translator_kmm.android.translate.presentation.TranslateScreen
+import dagger.hilt.android.AndroidEntryPoint
 
 @Composable
 fun TranslatorTheme(
@@ -78,6 +86,7 @@ fun TranslatorTheme(
     )
 }
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -87,9 +96,31 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-
+                    TranslateRoot()
                 }
             }
+        }
+    }
+}
+
+@Composable
+fun TranslateRoot() {
+    val navController = rememberNavController()
+    NavHost(
+        navController = navController,
+        startDestination = Routes.TRANSLATE
+    ) {
+        composable(route = Routes.TRANSLATE) {
+            val viewModel = hiltViewModel<AndroidTranslateViewModel>()
+            val state by viewModel.state.collectAsState()
+            TranslateScreen(
+                state = state,
+                onEvent = { event ->
+                    when (event) {
+                        else -> viewModel.onEvent(event)
+                    }
+                }
+            )
         }
     }
 }
